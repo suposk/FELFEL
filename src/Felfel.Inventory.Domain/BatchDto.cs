@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Felfel.Inventory.Entities
+namespace Felfel.Inventory.Domain
 {
-    public class Batch : EntitySoftDeleteBase
+    public class BatchDto : EntitySoftDeleteBaseDto
     {
         public int BatchId { get; set; }
 

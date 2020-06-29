@@ -37,5 +37,52 @@ namespace Felfel.Inventory.Entities
                     optionsBuilder.UseSqlite(_connectionString);
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Batch>().HasData(
+                new Batch()
+                {
+                    BatchId = 1, 
+                    DeliveredQuantity = 50, 
+                    CurrentQuantity = 50, 
+                    ExpirationDate = DateTime.Now.AddDays(5), 
+                    ProductId = 1, 
+                    SupplierName = "Mama Pasta",
+                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                },
+                new Batch()
+                {
+                    BatchId = 2,
+                    DeliveredQuantity = 100,
+                    CurrentQuantity = 100,
+                    ExpirationDate = DateTime.Now.AddDays(3),
+                    ProductId = 1,
+                    SupplierName = "Mama Pasta",
+                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                });
+
+        }
+    }
+
+    public static class DateTimeHelper
+    {
+        public static DateTime CreateRandomDate(this DateTime dateTime)
+        {
+            Random random = new Random(20);
+            int _min = -10;
+            int _max = 10;
+
+            var d = random.Next(_min, _max);
+            var h = random.Next(_min, _max);
+            var m = random.Next(_min, _max);
+            var s = random.Next(_min, _max);
+            var day = DateTime.Now.AddDays(d);
+            var currentDate = day.AddHours(h).AddMinutes(m).AddSeconds(s);
+            //var currentDate = DateTime.Now.AddSeconds(s).AddMinutes(m).AddHours(h).AddDays(d);
+            return currentDate;
+        }
     }
 }

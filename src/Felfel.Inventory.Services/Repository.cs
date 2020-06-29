@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Felfel.Inventory.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,45 +18,64 @@ namespace Felfel.Inventory.Services
             this.DatabaseContext = context;
         }
 
-        public void Add(TModel entity)
-        {
-            DatabaseContext.Set<TModel>().Add(entity);
-        }
-
-        public TModel Get(int id)
-        {
-            return DatabaseContext.Set<TModel>().Find(id);
-        }
-
-        public List<TModel> GetAll()
-        {
-            return DatabaseContext.Set<TModel>().ToList();
-        }
-
         public Task<List<TModel>> GetAllAsync()
         {
             return DatabaseContext.Set<TModel>().ToListAsync();
         }
 
-        public async Task<TModel> GetAsync(int id)
+        public async Task<TModel> GetByIdAsync(int id)
         {
             return await DatabaseContext.Set<TModel>().FindAsync(id);
         }
 
-        public void Remove(TModel entity)
+        public Task<TModel> GetByFilter(Expression<Func<TModel, bool>> expression)
         {
-            DatabaseContext.Entry(entity).State = EntityState.Deleted;
-            DatabaseContext.Set<TModel>().Remove(entity);
+            return DatabaseContext.Set<TModel>().FirstOrDefaultAsync(expression);
+        }
+
+        public Task<List<TModel>> GetListFilter(Expression<Func<TModel, bool>> expression)
+        {
+            return DatabaseContext.Set<TModel>().Where(expression).ToListAsync();
+        }
+
+        public void Add(TModel entity)
+        {
+            if (entity != null)
+            {
+                DatabaseContext.Add(entity);
+                if (entity is IEntityBase)
+                    (entity as IEntityBase).CreatedAt = DateTime.Now;
+            }
+        }
+
+
+        public void UpdateGeneric(TModel entity)
+        {
+            if (entity != null)
+            {
+                DatabaseContext.Entry(entity).State = EntityState.Modified;
+                if (entity is IEntityBase)
+                    (entity as IEntityBase).ModifiedAt = DateTime.Now;
+            }
+        }
+
+        public void Delete(TModel entity)
+        {
+            if (entity is IEntitySoftDeleteBase)
+            {
+                UpdateGeneric(entity);
+                (entity as IEntitySoftDeleteBase).IsDeleted = true;
+            }
+            else
+            {
+                DatabaseContext.Entry(entity).State = EntityState.Deleted;
+                DatabaseContext.Remove(entity);
+            }
         }
 
         public async Task<bool> SaveChangesAsync()
         {
             return await DatabaseContext.SaveChangesAsync() >= 0;
-        }
-
-        public void UpdateGeneric<T>(T entity) where T : class
-        {
-            DatabaseContext.Entry(entity).State = EntityState.Modified;
         }
     }
 }
