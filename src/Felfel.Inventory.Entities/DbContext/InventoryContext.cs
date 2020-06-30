@@ -27,6 +27,7 @@ namespace Felfel.Inventory.Entities
         }
 
         public DbSet<Batch> Batchs { get; set; }
+        public DbSet<BatchHistory> BatchHistorys { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

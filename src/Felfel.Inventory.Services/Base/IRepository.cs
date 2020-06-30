@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Felfel.Inventory.Services
 {
+
     public interface IRepository<TModel> where TModel : class
     {       
         Task<TModel> GetByIdAsync(int id);      

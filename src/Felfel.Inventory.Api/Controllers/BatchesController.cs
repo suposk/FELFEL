@@ -6,6 +6,7 @@ using AutoMapper;
 using Felfel.Inventory.Domain;
 using Felfel.Inventory.Entities;
 using Felfel.Inventory.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -45,7 +46,7 @@ namespace Felfel.Inventory.Api.Controllers
         {
             try
             {
-                _logger.LogInformation($"{nameof(GetBatches)} Started");
+                _logger.LogDebug($"{nameof(GetBatches)} Started");
                 IList<BatchDto> result = null;
 
                 //var repoObj = await _repositoryBatch.GetListFilter(a => a.IsDeleted == false);
@@ -73,7 +74,7 @@ namespace Felfel.Inventory.Api.Controllers
             BatchDto result = null;
             try
             {
-                _logger.LogInformation($"{nameof(GetBatch)} with {id} Started");
+                _logger.LogDebug($"{nameof(GetBatch)} with {id} Started");
 
                 //var repoObj = await _batchRepository.GetByIdAsync(id);
                 var repoObj = await _batchRepository.GetById<Batch>(id);
@@ -97,9 +98,40 @@ namespace Felfel.Inventory.Api.Controllers
         }
 
         // PUT api/<BatchesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<ActionResult<BatchDto>> Put(UpdateBatchDto dto)
         {
+            if (dto == null || dto.BatchId < 1 || dto.Units < 0)
+                return BadRequest();
+
+            if (dto.Units == 0)
+                return NoContent();
+
+            try
+            {
+                _logger.LogDebug($"{nameof(Put)} Started");
+
+                //var repoObj = await _genericRepository.GetById<MessageDetail>(dto.MessageDetailId);
+                var repoObj = await _batchRepository.GetById<Batch>(dto.BatchId);
+                if (repoObj == null)
+                    return NotFound();
+
+                var updated = await _batchRepository.UpdateUnits(dto.BatchId, dto.Units, dto.Description, dto.DecrementUnits);
+                if (updated != null)
+                {
+                    var result = _mapper.Map<BatchDto>(updated);                
+                    return result;
+                }
+                else                
+                    return this.StatusCode(StatusCodes.Status409Conflict, "Failed to update due to inconsistancy.");                    
+                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, nameof(Put), null);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Error during Update, {ex.Message}");
+                //throw;
+            }            
         }
 
         // DELETE api/<BatchesController>/5
