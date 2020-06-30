@@ -19,17 +19,21 @@ namespace Felfel.Inventory.Api.Controllers
     {
         private readonly ILogger<BatchesController> _logger;
         private readonly IMapper _mapper;
-        private readonly IRepository<Batch> _repositoryBatch;
+        private readonly IBatchRepository _batchRepository;
+
+        //private readonly IRepository<Batch> _repositoryBatch;
         private readonly IRepository<BatchHistory> _repositoryBatchHistory;
 
         public BatchesController(
             IMapper mapper,
-            IRepository<Batch> repositoryBatch,
+            //IRepository<Batch> repositoryBatch,
+            IBatchRepository batchRepository,
             IRepository<BatchHistory> repositoryBatchHistory,
             ILogger<BatchesController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _repositoryBatch = repositoryBatch;
+            _batchRepository = batchRepository;
+            //_repositoryBatch = repositoryBatch;
             _repositoryBatchHistory = repositoryBatchHistory;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -44,7 +48,8 @@ namespace Felfel.Inventory.Api.Controllers
                 _logger.LogInformation($"{nameof(GetBatches)} Started");
                 IList<BatchDto> result = null;
 
-                var repoObj = await _repositoryBatch.GetListFilter(a => a.IsDeleted == false);
+                //var repoObj = await _repositoryBatch.GetListFilter(a => a.IsDeleted == false);
+                var repoObj = await _batchRepository.GetListFilter<Batch>(a => a.IsDeleted == false);
                 if (repoObj == null)
                     return NotFound();
 
@@ -70,7 +75,8 @@ namespace Felfel.Inventory.Api.Controllers
             {
                 _logger.LogInformation($"{nameof(GetBatch)} with {id} Started");
 
-                var repoObj = await _repositoryBatch.GetByIdAsync(id);
+                //var repoObj = await _batchRepository.GetByIdAsync(id);
+                var repoObj = await _batchRepository.GetById<Batch>(id);
                 if (repoObj == null)
                     return NotFound();
                                 

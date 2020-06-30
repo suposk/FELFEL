@@ -46,20 +46,22 @@ namespace Felfel.Inventory.Entities
                 new Batch()
                 {
                     BatchId = 1, 
-                    DeliveredUnits = 50,                     
-                    ExpirationDate = DateTime.Now.AddDays(5), 
+                    DeliveredUnits = 50,
+                    AvailableUnits = 50,
+                    ExpirationDate = DateTime.UtcNow.AddDays(5), 
                     ProductId = 1, 
                     SupplierName = "Mama Pasta",
-                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
                 },
                 new Batch()
                 {
                     BatchId = 2,
-                    DeliveredUnits = 100,                    
-                    ExpirationDate = DateTime.Now.AddDays(3),
+                    DeliveredUnits = 100,
+                    AvailableUnits = 90,
+                    ExpirationDate = DateTime.UtcNow.AddDays(3),
                     ProductId = 1,
                     SupplierName = "Mama Pasta",
-                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
                 });
 
             modelBuilder.Entity<BatchHistory>().HasData(
@@ -69,7 +71,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 1,                    
                     Description = "Order Recived From Supplier Mama Pasta", 
                     Units = 50,
-                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
                 },
                 new BatchHistory()
                 {
@@ -77,7 +79,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 2,
                     Description = "Order Recived From Supplier Mama Pasta",
                     Units = 100,
-                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
                 },
                 new BatchHistory()
                 {
@@ -85,7 +87,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 2,
                     Description = "Removed 10 units for Company AAA",
                     Units = -10,
-                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
                 });
 
         }
@@ -103,9 +105,9 @@ namespace Felfel.Inventory.Entities
             var h = random.Next(_min, _max);
             var m = random.Next(_min, _max);
             var s = random.Next(_min, _max);
-            var day = DateTime.Now.AddDays(d);
+            var day = DateTime.UtcNow.AddDays(d);
             var currentDate = day.AddHours(h).AddMinutes(m).AddSeconds(s);
-            //var currentDate = DateTime.Now.AddSeconds(s).AddMinutes(m).AddHours(h).AddDays(d);
+            //var currentDate = DateTime.UtcNow.AddSeconds(s).AddMinutes(m).AddHours(h).AddDays(d);
             return currentDate;
         }
     }

@@ -6,8 +6,8 @@ namespace Felfel.Inventory.Domain
 {
     public abstract class DtoBase
     {
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAtUtc { get; set; }
 
-        public DateTime? ModifiedAt { get; set; }
+        public DateTime? ModifiedAtUtc { get; set; }
     }
 }

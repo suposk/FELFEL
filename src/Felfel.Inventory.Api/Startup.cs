@@ -34,6 +34,8 @@ namespace Felfel.Inventory.Api
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+
+            services.AddScoped<IBatchRepository, BatchRepository>();
             services.AddScoped(typeof(IRepository<Batch>), sp =>
             {
                 var ctx = sp.GetService<InventoryContext>();

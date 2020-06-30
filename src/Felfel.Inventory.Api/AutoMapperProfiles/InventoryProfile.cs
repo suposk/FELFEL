@@ -13,7 +13,7 @@ namespace Felfel.Inventory.Api.AutoMapperProfiles
         public InventoryProfile()
         {
             CreateMap<Batch, BatchDto>()
-                .ForMember(s => s.CurrentUnits, op => op.Ignore())
+                //.ForMember(s => s.CurrentUnits, op => op.Ignore())
                 .ReverseMap();
 
             CreateMap<BatchHistory, BatchHistoryDto>()

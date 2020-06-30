@@ -12,7 +12,7 @@ namespace Felfel.Inventory.Entities
 
         public int DeliveredUnits { get; set; }
 
-        //public int CurrentUnits { get; set; }
+        public int AvailableUnits { get; set; }
 
         public string SupplierName { get; set; }
 

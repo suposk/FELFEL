@@ -44,7 +44,7 @@ namespace Felfel.Inventory.Services
             {
                 DatabaseContext.Add(entity);
                 if (entity is IEntityBase)
-                    (entity as IEntityBase).CreatedAt = DateTime.Now;
+                    (entity as IEntityBase).CreatedAtUtc = DateTime.UtcNow;
             }
         }
 
@@ -55,7 +55,7 @@ namespace Felfel.Inventory.Services
             {
                 DatabaseContext.Entry(entity).State = EntityState.Modified;
                 if (entity is IEntityBase)
-                    (entity as IEntityBase).ModifiedAt = DateTime.Now;
+                    (entity as IEntityBase).ModifiedAtUtc = DateTime.UtcNow;
             }
         }
 

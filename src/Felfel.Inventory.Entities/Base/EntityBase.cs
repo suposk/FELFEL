@@ -4,9 +4,9 @@ namespace Felfel.Inventory.Entities
 {
     public abstract class EntityBase : IEntityBase
     {
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAtUtc { get; set; }
 
-        public DateTime? ModifiedAt { get; set; }
+        public DateTime? ModifiedAtUtc { get; set; }
     }
 
 }
