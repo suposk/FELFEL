@@ -16,23 +16,23 @@ namespace Felfel.Inventory.Services
             
         }
 
-        public async Task<T> GetById<T>(int Id) where T : class
+        public virtual async Task<T> GetByIdGeneric<T>(int Id) where T : class
         {
             var ent = await Context.FindAsync<T>(Id);
             return ent;
         }
 
-        public Task<T> GetByFilter<T>(Expression<Func<T, bool>> expression) where T : class
+        public virtual Task<T> GetByFilterGeneric<T>(Expression<Func<T, bool>> expression) where T : class
         {
             return Context.Set<T>().FirstOrDefaultAsync(expression);            
         }
 
-        public Task<List<T>> GetList<T>() where T : class
+        public virtual Task<List<T>> GetListGeneric<T>() where T : class
         {
             return Context.Set<T>().ToListAsync();            
         }
 
-        public Task<List<T>> GetListFilter<T>(Expression<Func<T, bool>> expression) where T : class
+        public virtual Task<List<T>> GetListFilterGeneric<T>(Expression<Func<T, bool>> expression) where T : class
         {
             return Context.Set<T>().Where(expression).ToListAsync();            
         }

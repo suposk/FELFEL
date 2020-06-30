@@ -50,7 +50,7 @@ namespace Felfel.Inventory.Api.Controllers
                 IList<BatchDto> result = null;
 
                 //var repoObj = await _repositoryBatch.GetListFilter(a => a.IsDeleted == false);
-                var repoObj = await _batchRepository.GetListFilter<Batch>(a => a.IsDeleted == false);
+                var repoObj = await _batchRepository.GetFilter(a => a.IsDeleted == false);
                 if (repoObj == null)
                     return NotFound();
 
@@ -76,8 +76,7 @@ namespace Felfel.Inventory.Api.Controllers
             {
                 _logger.LogDebug($"{nameof(GetBatch)} with {id} Started");
 
-                //var repoObj = await _batchRepository.GetByIdAsync(id);
-                var repoObj = await _batchRepository.GetById<Batch>(id);
+                var repoObj = await _batchRepository.GetById(id);
                 if (repoObj == null)
                     return NotFound();
                                 
@@ -112,7 +111,7 @@ namespace Felfel.Inventory.Api.Controllers
                 _logger.LogDebug($"{nameof(Put)} Started");
 
                 //var repoObj = await _genericRepository.GetById<MessageDetail>(dto.MessageDetailId);
-                var repoObj = await _batchRepository.GetById<Batch>(dto.BatchId);
+                var repoObj = await _batchRepository.GetByIdGeneric<Batch>(dto.BatchId);
                 if (repoObj == null)
                     return NotFound();
 

@@ -28,6 +28,7 @@ namespace Felfel.Inventory.Entities
 
         public DbSet<Batch> Batchs { get; set; }
         public DbSet<BatchHistory> BatchHistorys { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,25 +44,58 @@ namespace Felfel.Inventory.Entities
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Product>().HasData(
+                new Product()
+                {
+                    ProductId = 1, 
+                    ProductName = "Penne Vodka", 
+                    SupplierName = "Family Bistro",                      
+                    Price = 12,
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                },
+                new Product()
+                {
+                    ProductId = 2,
+                    ProductName = "Cesar Salad",
+                    SupplierName = "Family Bistro",
+                    Price = 8.5,
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                },
+                new Product()
+                {
+                    ProductId = 3,
+                    ProductName = "Turkey Sandwich",
+                    SupplierName = "Jano's Shop",
+                    Price = 5.5,
+                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                });
+
             modelBuilder.Entity<Batch>().HasData(
                 new Batch()
                 {
                     BatchId = 1, 
                     DeliveredUnits = 50,
                     AvailableUnits = 50,
-                    ExpirationDate = DateTime.UtcNow.AddDays(5), 
-                    ProductId = 1, 
-                    SupplierName = "Mama Pasta",
+                    ExpirationDate = DateTime.UtcNow, 
+                    ProductId = 1,                     
                     CreatedAtUtc = DateTime.UtcNow.AddDays(-2),
                 },
                 new Batch()
                 {
                     BatchId = 2,
                     DeliveredUnits = 100,
-                    AvailableUnits = 90,
-                    ExpirationDate = DateTime.UtcNow.AddDays(3),
-                    ProductId = 1,
-                    SupplierName = "Mama Pasta",
+                    AvailableUnits = 85,
+                    ExpirationDate = DateTime.UtcNow.AddDays(4),
+                    ProductId = 2,                    
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-3),
+                },
+                new Batch()
+                {
+                    BatchId = 3,
+                    DeliveredUnits = 200,
+                    AvailableUnits = 200,
+                    ExpirationDate = DateTime.UtcNow.AddDays(-2),
+                    ProductId = 3,
                     CreatedAtUtc = DateTime.UtcNow.AddDays(-1),
                 });
 
@@ -74,13 +108,14 @@ namespace Felfel.Inventory.Entities
                     Units = 50,
                     CreatedAtUtc = DateTime.UtcNow.AddDays(-2),
                 },
+
                 new BatchHistory()
                 {
                     BatchHistoryId = 2,
                     BatchId = 2,
                     Description = "Order Recived From Supplier Mama Pasta",
                     Units = 100,
-                    CreatedAtUtc = DateTime.UtcNow.AddDays(-1),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-3),
                 },
                 new BatchHistory()
                 {
@@ -88,7 +123,24 @@ namespace Felfel.Inventory.Entities
                     BatchId = 2,
                     Description = "Removed 10 units for Company AAA",
                     Units = -10,
-                    CreatedAtUtc = DateTime.UtcNow.AddHours(-5),
+                    CreatedAtUtc = DateTime.UtcNow.AddHours(-2),
+                },
+                new BatchHistory()
+                {
+                    BatchHistoryId = 4,
+                    BatchId = 2,
+                    Description = "Lost 5 units",
+                    Units = -5,
+                    CreatedAtUtc = DateTime.UtcNow.AddHours(-1),
+                },
+
+                new BatchHistory()
+                {
+                    BatchHistoryId = 5,
+                    BatchId = 3,
+                    Description = "Order Recived",
+                    Units = 200,
+                    CreatedAtUtc = DateTime.UtcNow.AddHours(-1),
                 });
 
         }

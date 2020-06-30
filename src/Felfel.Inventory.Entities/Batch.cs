@@ -10,11 +10,11 @@ namespace Felfel.Inventory.Entities
 
         public int ProductId { get; set; }
 
+        public Product Product { get; set; }
+
         public int DeliveredUnits { get; set; }
 
-        public int AvailableUnits { get; set; }
-
-        public string SupplierName { get; set; }
+        public int AvailableUnits { get; set; }        
 
         public DateTime ExpirationDate { get; set; }
     }

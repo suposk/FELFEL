@@ -18,6 +18,9 @@ namespace Felfel.Inventory.Api.AutoMapperProfiles
 
             CreateMap<BatchHistory, BatchHistoryDto>()
                 .ReverseMap();
+
+            CreateMap<Product, ProductDto>()
+                .ReverseMap();
         }       
     }
 }

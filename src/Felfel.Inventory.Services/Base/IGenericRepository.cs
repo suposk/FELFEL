@@ -9,12 +9,12 @@ namespace Felfel.Inventory.Services
     public interface IGenericRepository: IRepositoryBase
     {
 
-        Task<T> GetById<T>(int Id) where T : class;
+        Task<T> GetByIdGeneric<T>(int Id) where T : class;
 
-        Task<T> GetByFilter<T>(Expression<Func<T, bool>> expression) where T : class;
+        Task<T> GetByFilterGeneric<T>(Expression<Func<T, bool>> expression) where T : class;
 
-        Task<List<T>> GetList<T>() where T : class;
+        Task<List<T>> GetListGeneric<T>() where T : class;
 
-        Task<List<T>> GetListFilter<T>(Expression<Func<T, bool>> expression) where T : class;
+        Task<List<T>> GetListFilterGeneric<T>(Expression<Func<T, bool>> expression) where T : class;
     }
 }

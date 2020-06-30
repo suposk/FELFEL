@@ -5,12 +5,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Felfel.Inventory.Services
 {
     public interface IBatchRepository: IGenericRepository
     {
         Task<int> GetAvailableUnits(int Id);
+
+        Task<List<Batch>> GetFilter(Expression<Func<Batch, bool>> expression);
+        
+        Task<Batch> GetById(int Id);
 
         Task<Batch> UpdateUnits(int Id, int units, string description, bool decrementCount);
     }
@@ -22,14 +27,25 @@ namespace Felfel.Inventory.Services
 
         }
 
+        public Task<List<Batch>> GetFilter(Expression<Func<Batch, bool>> expression)
+        {
+            return Context.Batchs.Include(a => a.Product).Where(expression).ToListAsync();
+        }
+
+        public Task<Batch> GetById(int Id)
+        {
+            return Context.Batchs.Include(a => a.Product)
+                .FirstOrDefaultAsync(a => a.BatchId == Id);            
+        }
+
         public Task<int> GetAvailableUnits(int Id)
         {
             return Context.BatchHistorys.Where(a =>a.BatchId == Id).SumAsync(a => a.Units);
-        }
+        }        
 
         public async Task<Batch> UpdateUnits(int Id, int units, string description, bool decrementCount)
         {
-            var toUpdateTask = GetById<Batch>(Id);
+            var toUpdateTask = GetById(Id);
             var historySumTask = GetAvailableUnits(Id);
 
             await Task.WhenAll(new List<Task> { toUpdateTask, historySumTask });
@@ -61,7 +77,7 @@ namespace Felfel.Inventory.Services
 
             if (await SaveChangesAsync())
             {
-                var updated = await GetById<Batch>(Id);
+                var updated = await GetById(Id);
                 if (updated.AvailableUnits == existingCount + units)
                     return updated;
             }           
