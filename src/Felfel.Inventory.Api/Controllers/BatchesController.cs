@@ -20,14 +20,17 @@ namespace Felfel.Inventory.Api.Controllers
         private readonly ILogger<BatchesController> _logger;
         private readonly IMapper _mapper;
         private readonly IRepository<Batch> _repositoryBatch;
+        private readonly IRepository<BatchHistory> _repositoryBatchHistory;
 
         public BatchesController(
             IMapper mapper,
             IRepository<Batch> repositoryBatch,
+            IRepository<BatchHistory> repositoryBatchHistory,
             ILogger<BatchesController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _repositoryBatch = repositoryBatch;
+            _repositoryBatchHistory = repositoryBatchHistory;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 

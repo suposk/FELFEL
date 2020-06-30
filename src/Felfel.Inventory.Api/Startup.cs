@@ -41,6 +41,13 @@ namespace Felfel.Inventory.Api
                 return rep;
             });
 
+            services.AddScoped(typeof(IRepository<BatchHistory>), sp =>
+            {
+                var ctx = sp.GetService<InventoryContext>();
+                var rep = new Repository<BatchHistory>(ctx);
+                return rep;
+            });
+
             services.AddDbContext<InventoryContext>(options =>
             {
                 //sql Lite                

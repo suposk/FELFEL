@@ -46,8 +46,7 @@ namespace Felfel.Inventory.Entities
                 new Batch()
                 {
                     BatchId = 1, 
-                    DeliveredQuantity = 50, 
-                    CurrentQuantity = 50, 
+                    DeliveredUnits = 50,                     
                     ExpirationDate = DateTime.Now.AddDays(5), 
                     ProductId = 1, 
                     SupplierName = "Mama Pasta",
@@ -56,11 +55,36 @@ namespace Felfel.Inventory.Entities
                 new Batch()
                 {
                     BatchId = 2,
-                    DeliveredQuantity = 100,
-                    CurrentQuantity = 100,
+                    DeliveredUnits = 100,                    
                     ExpirationDate = DateTime.Now.AddDays(3),
                     ProductId = 1,
                     SupplierName = "Mama Pasta",
+                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                });
+
+            modelBuilder.Entity<BatchHistory>().HasData(
+                new BatchHistory()
+                {
+                    BatchHistoryId = 1,
+                    BatchId = 1,                    
+                    Description = "Order Recived From Supplier Mama Pasta", 
+                    Units = 50,
+                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                },
+                new BatchHistory()
+                {
+                    BatchHistoryId = 2,
+                    BatchId = 2,
+                    Description = "Order Recived From Supplier Mama Pasta",
+                    Units = 100,
+                    CreatedAt = DateTime.Now.CreateRandomDate(),
+                },
+                new BatchHistory()
+                {
+                    BatchHistoryId = 3,
+                    BatchId = 2,
+                    Description = "Removed 10 units for Company AAA",
+                    Units = -10,
                     CreatedAt = DateTime.Now.CreateRandomDate(),
                 });
 

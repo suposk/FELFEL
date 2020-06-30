@@ -1,6 +1,6 @@
 ﻿namespace Felfel.Inventory.Domain
 {
-    public abstract class EntitySoftDeleteBaseDto : DtoBase
+    public abstract class DtoEntityBaseSoftDelete : DtoBase
     {
         public bool IsDeleted { get; set; }
     }
