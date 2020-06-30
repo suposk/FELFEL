@@ -29,7 +29,7 @@ namespace Felfel.Inventory.Api.Controllers
             ILogger<ProductBatchesController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _batchRepository = batchRepository;                        
+            _batchRepository = batchRepository ?? throw new ArgumentNullException(nameof(batchRepository));                        
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         

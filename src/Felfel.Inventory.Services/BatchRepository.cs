@@ -41,7 +41,41 @@ namespace Felfel.Inventory.Services
         public Task<int> GetAvailableUnits(int Id)
         {
             return Context.BatchHistorys.Where(a =>a.BatchId == Id).SumAsync(a => a.Units);
-        }        
+        }
+
+
+        public override async void AddGeneric<T>(T entity)
+        {
+            var toAdd = entity as Batch;
+            if (toAdd == null)
+                throw new ArgumentException("Wrong type passed");
+
+            BatchHistory history;
+            base.AddGeneric(toAdd);
+            if (await SaveChangesAsync() && toAdd.BatchId > 0)
+            {
+                history = new BatchHistory
+                {
+                    BatchId = toAdd.BatchId, 
+                    Units = toAdd.DeliveredUnits,
+                    Description = $"Order of {toAdd.DeliveredUnits} units delivered"
+                };
+                base.AddGeneric(history);
+                if (await SaveChangesAsync() && history.BatchHistoryId > 0)
+                {
+                    return;
+                }
+                else
+                {
+                    base.DeleteGeneric(toAdd);
+                    await SaveChangesAsync();
+                }
+            }   
+            else
+            {
+                throw new Exception("Failed to Create Batch");
+            }
+        }
 
         public async Task<Batch> UpdateUnits(int Id, int units, string description, bool decrementCount)
         {

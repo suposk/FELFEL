@@ -28,7 +28,7 @@ namespace Felfel.Inventory.Api.Controllers
             ILogger<BatchesHistoryController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _repositoryBatchHistory = repositoryBatchHistory;
+            _repositoryBatchHistory = repositoryBatchHistory ?? throw new ArgumentNullException(nameof(repositoryBatchHistory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
                 

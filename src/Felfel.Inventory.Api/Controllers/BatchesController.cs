@@ -21,26 +21,21 @@ namespace Felfel.Inventory.Api.Controllers
         private readonly ILogger<BatchesController> _logger;
         private readonly IMapper _mapper;
         private readonly IBatchRepository _batchRepository;
-
-        //private readonly IRepository<Batch> _repositoryBatch;
         private readonly IRepository<BatchHistory> _repositoryBatchHistory;
 
         public BatchesController(
-            IMapper mapper,
-            //IRepository<Batch> repositoryBatch,
+            IMapper mapper,            
             IBatchRepository batchRepository,
             IRepository<BatchHistory> repositoryBatchHistory,
             ILogger<BatchesController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _batchRepository = batchRepository;
-            //_repositoryBatch = repositoryBatch;
-            _repositoryBatchHistory = repositoryBatchHistory;
+            _batchRepository = batchRepository ?? throw new ArgumentNullException(nameof(batchRepository));            
+            _repositoryBatchHistory = repositoryBatchHistory ?? throw new ArgumentNullException(nameof(repositoryBatchHistory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-
-        // GET: api/<BatchesController>
+                
         [HttpGet]
         public async Task<ActionResult<IList<BatchDto>>> GetBatches()
         {
@@ -48,8 +43,7 @@ namespace Felfel.Inventory.Api.Controllers
             {
                 _logger.LogDebug($"{nameof(GetBatches)} Started");
                 IList<BatchDto> result = null;
-
-                //var repoObj = await _repositoryBatch.GetListFilter(a => a.IsDeleted == false);
+                                
                 var repoObj = await _batchRepository.GetFilter(a => a.IsDeleted == false);
                 if (repoObj == null)
                     return NotFound();
@@ -62,15 +56,11 @@ namespace Felfel.Inventory.Api.Controllers
                 _logger.LogError(ex, nameof(GetBatches), null);
             }
             return null;
-        }
-
-        // GET api/<BatchesController>/5
-        [HttpGet("{id}")]
+        }              
+        
+        [HttpGet("{id}", Name = "GetBatch")]
         public async Task<ActionResult<BatchDto>> GetBatch(int id)
         {
-            if (id < 1)
-                return BadRequest();
-
             BatchDto result = null;
             try
             {
@@ -90,17 +80,43 @@ namespace Felfel.Inventory.Api.Controllers
             }
         }
 
-        // POST api/<BatchesController>
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<BatchDto>> Post(CreateBatchDto dto)
         {
+            if (dto == null)
+                return BadRequest();
+
+            BatchDto result = null;
+            try
+            {
+                _logger.LogInformation($"{nameof(Post)} Started");
+
+                var repoObj = _mapper.Map<Batch>(dto);
+                _batchRepository.AddGeneric(repoObj);
+
+                //if (await _batchRepository.SaveChangesAsync())
+                if (repoObj.BatchId > 0)
+                {
+                    result = _mapper.Map<BatchDto>(repoObj);
+                    return CreatedAtRoute(nameof(GetBatch),
+                        new { id = result.BatchId },
+                        result);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, nameof(Post), null);
+                throw;
+            }
+            return result;
         }
 
-        // PUT api/<BatchesController>/5
+
         [HttpPut]
         public async Task<ActionResult<BatchDto>> Put(UpdateBatchDto dto)
         {
-            if (dto == null || dto.BatchId < 1 || dto.Units < 0)
+            if (dto == null)
                 return BadRequest();
 
             if (dto.Units == 0)
@@ -109,8 +125,7 @@ namespace Felfel.Inventory.Api.Controllers
             try
             {
                 _logger.LogDebug($"{nameof(Put)} Started");
-
-                //var repoObj = await _genericRepository.GetById<MessageDetail>(dto.MessageDetailId);
+                                
                 var repoObj = await _batchRepository.GetByIdGeneric<Batch>(dto.BatchId);
                 if (repoObj == null)
                     return NotFound();
@@ -133,10 +148,33 @@ namespace Felfel.Inventory.Api.Controllers
             }            
         }
 
-        // DELETE api/<BatchesController>/5
+
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            if (id < 1)
+                return BadRequest();
+
+            try
+            {
+                _logger.LogInformation($"{nameof(Delete)} Started");
+
+                var repoObj = await _batchRepository.GetById(id);
+                if (repoObj == null)
+                    return NotFound();
+
+                _batchRepository.DeleteGeneric(repoObj);
+                if (await _batchRepository.SaveChangesAsync())
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, nameof(Delete), null);
+                throw;
+            }
+            return null;
         }
     }
 }

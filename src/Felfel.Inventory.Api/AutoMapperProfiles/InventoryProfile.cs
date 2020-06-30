@@ -16,6 +16,9 @@ namespace Felfel.Inventory.Api.AutoMapperProfiles
                 //.ForMember(s => s.CurrentUnits, op => op.Ignore())
                 .ReverseMap();
 
+            CreateMap<CreateBatchDto, Batch>()
+                .ForMember(des => des.AvailableUnits, op => op.MapFrom(src => src.DeliveredUnits));                
+
             CreateMap<BatchHistory, BatchHistoryDto>()
                 .ReverseMap();
 

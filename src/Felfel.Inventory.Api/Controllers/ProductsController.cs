@@ -28,7 +28,7 @@ namespace Felfel.Inventory.Api.Controllers
             ILogger<ProductsController> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _repositoryProducts = repositoryProducts;
+            _repositoryProducts = repositoryProducts ?? throw new ArgumentNullException(nameof(repositoryProducts));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
