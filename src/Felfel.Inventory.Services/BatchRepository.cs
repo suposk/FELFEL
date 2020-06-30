@@ -46,6 +46,11 @@ namespace Felfel.Inventory.Services
                 
                 units = units * -1;
             }
+            else
+            {
+                if (existingCount + units > toUpdateTask.Result.DeliveredUnits)
+                    throw new ArgumentException("Number of units exides original delivered units.");
+            }
 
             if (string.IsNullOrWhiteSpace(description))
                 description = $"{(decrementCount ? "Removed" : "Added")} {units}";
