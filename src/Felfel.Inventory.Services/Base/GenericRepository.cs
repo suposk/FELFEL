@@ -22,22 +22,19 @@ namespace Felfel.Inventory.Services
             return ent;
         }
 
-        public async Task<T> GetByFilter<T>(Expression<Func<T, bool>> expression) where T : class
+        public Task<T> GetByFilter<T>(Expression<Func<T, bool>> expression) where T : class
         {
-            var ent = await Context.Set<T>().FirstOrDefaultAsync(expression);
-            return ent;
+            return Context.Set<T>().FirstOrDefaultAsync(expression);            
         }
 
-        public async Task<List<T>> GetList<T>() where T : class
+        public Task<List<T>> GetList<T>() where T : class
         {
-            var ent = await Context.Set<T>().ToListAsync();
-            return ent;
+            return Context.Set<T>().ToListAsync();            
         }
 
-        public async Task<List<T>> GetListFilter<T>(Expression<Func<T, bool>> expression) where T : class
+        public Task<List<T>> GetListFilter<T>(Expression<Func<T, bool>> expression) where T : class
         {
-            var ent = await Context.Set<T>().Where(expression).ToListAsync();
-            return ent;
+            return Context.Set<T>().Where(expression).ToListAsync();            
         }
 
     }

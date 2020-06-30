@@ -47,27 +47,27 @@ namespace Felfel.Inventory.Entities.Migrations
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 1, 1, new DateTime(2020, 6, 23, 13, 11, 30, 563, DateTimeKind.Utc).AddTicks(5554), "Order Recived From Supplier Mama Pasta", null, 50 });
+                values: new object[] { 1, 1, new DateTime(2020, 6, 28, 11, 45, 31, 968, DateTimeKind.Utc).AddTicks(5968), "Order Recived From Supplier Mama Pasta", null, 50 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 2, 2, new DateTime(2020, 6, 23, 13, 11, 30, 563, DateTimeKind.Utc).AddTicks(5621), "Order Recived From Supplier Mama Pasta", null, 100 });
+                values: new object[] { 2, 2, new DateTime(2020, 6, 29, 11, 45, 31, 968, DateTimeKind.Utc).AddTicks(6021), "Order Recived From Supplier Mama Pasta", null, 100 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 3, 2, new DateTime(2020, 6, 23, 13, 11, 30, 563, DateTimeKind.Utc).AddTicks(5633), "Removed 10 units for Company AAA", null, -10 });
+                values: new object[] { 3, 2, new DateTime(2020, 6, 30, 6, 45, 31, 968, DateTimeKind.Utc).AddTicks(6023), "Removed 10 units for Company AAA", null, -10 });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId", "SupplierName" },
-                values: new object[] { 1, 50, new DateTime(2020, 6, 23, 13, 11, 30, 562, DateTimeKind.Utc).AddTicks(2184), 50, new DateTime(2020, 7, 5, 10, 7, 24, 561, DateTimeKind.Utc).AddTicks(9421), false, null, 1, "Mama Pasta" });
+                values: new object[] { 1, 50, new DateTime(2020, 6, 28, 11, 45, 31, 967, DateTimeKind.Utc).AddTicks(2906), 50, new DateTime(2020, 7, 5, 11, 45, 31, 967, DateTimeKind.Utc).AddTicks(1679), false, null, 1, "Mama Pasta" });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId", "SupplierName" },
-                values: new object[] { 2, 90, new DateTime(2020, 6, 23, 13, 11, 30, 562, DateTimeKind.Utc).AddTicks(2819), 100, new DateTime(2020, 7, 3, 10, 7, 24, 562, DateTimeKind.Utc).AddTicks(2766), false, null, 1, "Mama Pasta" });
+                values: new object[] { 2, 90, new DateTime(2020, 6, 29, 11, 45, 31, 967, DateTimeKind.Utc).AddTicks(3390), 100, new DateTime(2020, 7, 3, 11, 45, 31, 967, DateTimeKind.Utc).AddTicks(3363), false, null, 1, "Mama Pasta" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -52,7 +52,7 @@ namespace Felfel.Inventory.Entities
                     ExpirationDate = DateTime.UtcNow.AddDays(5), 
                     ProductId = 1, 
                     SupplierName = "Mama Pasta",
-                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-2),
                 },
                 new Batch()
                 {
@@ -62,7 +62,7 @@ namespace Felfel.Inventory.Entities
                     ExpirationDate = DateTime.UtcNow.AddDays(3),
                     ProductId = 1,
                     SupplierName = "Mama Pasta",
-                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-1),
                 });
 
             modelBuilder.Entity<BatchHistory>().HasData(
@@ -72,7 +72,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 1,                    
                     Description = "Order Recived From Supplier Mama Pasta", 
                     Units = 50,
-                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-2),
                 },
                 new BatchHistory()
                 {
@@ -80,7 +80,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 2,
                     Description = "Order Recived From Supplier Mama Pasta",
                     Units = 100,
-                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-1),
                 },
                 new BatchHistory()
                 {
@@ -88,7 +88,7 @@ namespace Felfel.Inventory.Entities
                     BatchId = 2,
                     Description = "Removed 10 units for Company AAA",
                     Units = -10,
-                    CreatedAtUtc = DateTime.UtcNow.CreateRandomDate(),
+                    CreatedAtUtc = DateTime.UtcNow.AddHours(-5),
                 });
 
         }
