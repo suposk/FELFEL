@@ -23,13 +23,13 @@ namespace Felfel.Inventory.Services
             switch (freshnesState)
             {
                 case FreshnesState.Fresh:
-                    expression = (a => a.ExpirationDate > DateTime.UtcNow.AddDays(-1));                    
+                    expression = (a => a.ExpirationDate.DayOfYear > DateTime.UtcNow.DayOfYear);                    
                     break;                    
                 case FreshnesState.ExpiresToday:
                     expression = (a => a.ExpirationDate.DayOfYear == DateTime.UtcNow.DayOfYear);
                     break;
                 case FreshnesState.Expired:
-                    expression = (a => a.ExpirationDate < DateTime.UtcNow.AddDays(-1));
+                    expression = (a => a.ExpirationDate.DayOfYear < DateTime.UtcNow.DayOfYear);
                     break;
             }
             return Context.Batchs.Include(a => a.Product).Where(expression).ToListAsync();            

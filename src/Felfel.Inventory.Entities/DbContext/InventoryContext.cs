@@ -94,9 +94,9 @@ namespace Felfel.Inventory.Entities
                     BatchId = 3,
                     DeliveredUnits = 200,
                     AvailableUnits = 200,
-                    ExpirationDate = DateTime.UtcNow.AddDays(-2),
+                    ExpirationDate = DateTime.UtcNow.AddDays(-1),
                     ProductId = 3,
-                    CreatedAtUtc = DateTime.UtcNow.AddDays(-1),
+                    CreatedAtUtc = DateTime.UtcNow.AddDays(-3),
                 },
                 new Batch()
                 {
