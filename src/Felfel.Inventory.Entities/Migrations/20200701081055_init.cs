@@ -71,72 +71,72 @@ namespace Felfel.Inventory.Entities.Migrations
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 1, 1, new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9144), "Order Recived From Supplier Family Bistro", null, 50 });
+                values: new object[] { 1, 1, new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3862), "Order Recived From Supplier Family Bistro", null, 50 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 2, 2, new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9188), "Order Recived From Supplier Family Bistro", null, 100 });
+                values: new object[] { 2, 2, new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3909), "Order Recived From Supplier Family Bistro", null, 100 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 3, 2, new DateTime(2020, 6, 30, 13, 43, 34, 290, DateTimeKind.Utc).AddTicks(9190), "Removed 10 units for Company AAA", null, -10 });
+                values: new object[] { 3, 2, new DateTime(2020, 7, 1, 6, 10, 55, 418, DateTimeKind.Utc).AddTicks(3911), "Removed 10 units for Company AAA", null, -10 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 4, 2, new DateTime(2020, 6, 30, 14, 43, 34, 290, DateTimeKind.Utc).AddTicks(9192), "Lost 5 units", null, -5 });
+                values: new object[] { 4, 2, new DateTime(2020, 7, 1, 7, 10, 55, 418, DateTimeKind.Utc).AddTicks(3913), "Lost 5 units", null, -5 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 5, 3, new DateTime(2020, 6, 30, 14, 43, 34, 290, DateTimeKind.Utc).AddTicks(9193), "Order Recived", null, 200 });
+                values: new object[] { 5, 3, new DateTime(2020, 7, 1, 7, 10, 55, 418, DateTimeKind.Utc).AddTicks(3914), "Order Recived", null, 200 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 6, 4, new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9194), "Order Recived From Supplier Family Bistro", null, 100 });
+                values: new object[] { 6, 4, new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3915), "Order Recived From Supplier Family Bistro", null, 100 });
 
             migrationBuilder.InsertData(
                 table: "BatchHistorys",
                 columns: new[] { "BatchHistoryId", "BatchId", "CreatedAtUtc", "Description", "ModifiedAtUtc", "Units" },
-                values: new object[] { 7, 4, new DateTime(2020, 6, 30, 13, 43, 34, 290, DateTimeKind.Utc).AddTicks(9195), "Removed 40 units for Company BBB", null, -40 });
+                values: new object[] { 7, 4, new DateTime(2020, 7, 1, 6, 10, 55, 418, DateTimeKind.Utc).AddTicks(3916), "Removed 40 units for Company BBB", null, -40 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "CreatedAtUtc", "IsActive", "IsDeleted", "ModifiedAtUtc", "Price", "ProductName", "SupplierName" },
-                values: new object[] { 1, new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(3910), true, false, null, 12.0, "Penne Vodka", "Family Bistro" });
+                values: new object[] { 1, new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(6380), true, false, null, 12.0, "Penne Vodka", "Family Bistro" });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "CreatedAtUtc", "IsActive", "IsDeleted", "ModifiedAtUtc", "Price", "ProductName", "SupplierName" },
-                values: new object[] { 2, new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(4577), true, false, null, 8.5, "Cesar Salad", "Family Bistro" });
+                values: new object[] { 2, new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(7070), true, false, null, 8.5, "Cesar Salad", "Family Bistro" });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "CreatedAtUtc", "IsActive", "IsDeleted", "ModifiedAtUtc", "Price", "ProductName", "SupplierName" },
-                values: new object[] { 3, new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(4616), true, false, null, 5.5, "Turkey Sandwich", "Jano's Shop" });
+                values: new object[] { 3, new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(7097), true, false, null, 5.5, "Turkey Sandwich", "Jano's Shop" });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId" },
-                values: new object[] { 1, 50, new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7040), 50, new DateTime(2020, 6, 30, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(6244), false, null, 1 });
+                values: new object[] { 1, 50, new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(495), 50, new DateTime(2020, 7, 1, 8, 10, 55, 417, DateTimeKind.Utc).AddTicks(9430), false, null, 1 });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId" },
-                values: new object[] { 2, 85, new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7098), 100, new DateTime(2020, 7, 4, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7086), false, null, 2 });
+                values: new object[] { 2, 85, new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(551), 100, new DateTime(2020, 7, 5, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(539), false, null, 2 });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId" },
-                values: new object[] { 4, 60, new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7103), 100, new DateTime(2020, 6, 30, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7102), false, null, 2 });
+                values: new object[] { 4, 60, new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(555), 100, new DateTime(2020, 7, 1, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(554), false, null, 2 });
 
             migrationBuilder.InsertData(
                 table: "Batchs",
                 columns: new[] { "BatchId", "AvailableUnits", "CreatedAtUtc", "DeliveredUnits", "ExpirationDate", "IsDeleted", "ModifiedAtUtc", "ProductId" },
-                values: new object[] { 3, 200, new DateTime(2020, 6, 29, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7101), 200, new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7100), false, null, 3 });
+                values: new object[] { 3, 200, new DateTime(2020, 6, 30, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(553), 200, new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(552), false, null, 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Batchs_ProductId",

@@ -8,8 +8,6 @@ namespace Felfel.Inventory.Domain
         [Range(1, int.MaxValue)]
         public int ProductId { get; set; }
 
-        public ProductDto Product { get; set; }
-
         [Range(1, int.MaxValue)]
         public int DeliveredUnits { get; set; }                
 

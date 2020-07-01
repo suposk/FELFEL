@@ -43,6 +43,7 @@ namespace Felfel.Inventory.Api
 
 
             services.AddScoped<IBatchRepository, BatchRepository>();
+            services.AddScoped<ISummaryRepository, SummaryRepository>();
             services.AddScoped(typeof(IRepository<Batch>), sp =>
             {
                 var ctx = sp.GetService<InventoryContext>();

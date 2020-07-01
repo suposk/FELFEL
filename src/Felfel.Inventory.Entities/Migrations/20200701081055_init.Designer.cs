@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Felfel.Inventory.Entities.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    [Migration("20200630154334_init")]
+    [Migration("20200701081055_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,9 +56,9 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchId = 1,
                             AvailableUnits = 50,
-                            CreatedAtUtc = new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7040),
+                            CreatedAtUtc = new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(495),
                             DeliveredUnits = 50,
-                            ExpirationDate = new DateTime(2020, 6, 30, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(6244),
+                            ExpirationDate = new DateTime(2020, 7, 1, 8, 10, 55, 417, DateTimeKind.Utc).AddTicks(9430),
                             IsDeleted = false,
                             ProductId = 1
                         },
@@ -66,9 +66,9 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchId = 2,
                             AvailableUnits = 85,
-                            CreatedAtUtc = new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7098),
+                            CreatedAtUtc = new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(551),
                             DeliveredUnits = 100,
-                            ExpirationDate = new DateTime(2020, 7, 4, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7086),
+                            ExpirationDate = new DateTime(2020, 7, 5, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(539),
                             IsDeleted = false,
                             ProductId = 2
                         },
@@ -76,9 +76,9 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchId = 3,
                             AvailableUnits = 200,
-                            CreatedAtUtc = new DateTime(2020, 6, 29, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7101),
+                            CreatedAtUtc = new DateTime(2020, 6, 30, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(553),
                             DeliveredUnits = 200,
-                            ExpirationDate = new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7100),
+                            ExpirationDate = new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(552),
                             IsDeleted = false,
                             ProductId = 3
                         },
@@ -86,9 +86,9 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchId = 4,
                             AvailableUnits = 60,
-                            CreatedAtUtc = new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7103),
+                            CreatedAtUtc = new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(555),
                             DeliveredUnits = 100,
-                            ExpirationDate = new DateTime(2020, 6, 30, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(7102),
+                            ExpirationDate = new DateTime(2020, 7, 1, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(554),
                             IsDeleted = false,
                             ProductId = 2
                         });
@@ -124,7 +124,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 1,
                             BatchId = 1,
-                            CreatedAtUtc = new DateTime(2020, 6, 28, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9144),
+                            CreatedAtUtc = new DateTime(2020, 6, 29, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3862),
                             Description = "Order Recived From Supplier Family Bistro",
                             Units = 50
                         },
@@ -132,7 +132,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 2,
                             BatchId = 2,
-                            CreatedAtUtc = new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9188),
+                            CreatedAtUtc = new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3909),
                             Description = "Order Recived From Supplier Family Bistro",
                             Units = 100
                         },
@@ -140,7 +140,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 3,
                             BatchId = 2,
-                            CreatedAtUtc = new DateTime(2020, 6, 30, 13, 43, 34, 290, DateTimeKind.Utc).AddTicks(9190),
+                            CreatedAtUtc = new DateTime(2020, 7, 1, 6, 10, 55, 418, DateTimeKind.Utc).AddTicks(3911),
                             Description = "Removed 10 units for Company AAA",
                             Units = -10
                         },
@@ -148,7 +148,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 4,
                             BatchId = 2,
-                            CreatedAtUtc = new DateTime(2020, 6, 30, 14, 43, 34, 290, DateTimeKind.Utc).AddTicks(9192),
+                            CreatedAtUtc = new DateTime(2020, 7, 1, 7, 10, 55, 418, DateTimeKind.Utc).AddTicks(3913),
                             Description = "Lost 5 units",
                             Units = -5
                         },
@@ -156,7 +156,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 5,
                             BatchId = 3,
-                            CreatedAtUtc = new DateTime(2020, 6, 30, 14, 43, 34, 290, DateTimeKind.Utc).AddTicks(9193),
+                            CreatedAtUtc = new DateTime(2020, 7, 1, 7, 10, 55, 418, DateTimeKind.Utc).AddTicks(3914),
                             Description = "Order Recived",
                             Units = 200
                         },
@@ -164,7 +164,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 6,
                             BatchId = 4,
-                            CreatedAtUtc = new DateTime(2020, 6, 27, 15, 43, 34, 290, DateTimeKind.Utc).AddTicks(9194),
+                            CreatedAtUtc = new DateTime(2020, 6, 28, 8, 10, 55, 418, DateTimeKind.Utc).AddTicks(3915),
                             Description = "Order Recived From Supplier Family Bistro",
                             Units = 100
                         },
@@ -172,7 +172,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         {
                             BatchHistoryId = 7,
                             BatchId = 4,
-                            CreatedAtUtc = new DateTime(2020, 6, 30, 13, 43, 34, 290, DateTimeKind.Utc).AddTicks(9195),
+                            CreatedAtUtc = new DateTime(2020, 7, 1, 6, 10, 55, 418, DateTimeKind.Utc).AddTicks(3916),
                             Description = "Removed 40 units for Company BBB",
                             Units = -40
                         });
@@ -213,7 +213,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         new
                         {
                             ProductId = 1,
-                            CreatedAtUtc = new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(3910),
+                            CreatedAtUtc = new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(6380),
                             IsActive = true,
                             IsDeleted = false,
                             Price = 12.0,
@@ -223,7 +223,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         new
                         {
                             ProductId = 2,
-                            CreatedAtUtc = new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(4577),
+                            CreatedAtUtc = new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(7070),
                             IsActive = true,
                             IsDeleted = false,
                             Price = 8.5,
@@ -233,7 +233,7 @@ namespace Felfel.Inventory.Entities.Migrations
                         new
                         {
                             ProductId = 3,
-                            CreatedAtUtc = new DateTime(2020, 6, 23, 18, 47, 40, 289, DateTimeKind.Utc).AddTicks(4616),
+                            CreatedAtUtc = new DateTime(2020, 6, 24, 11, 15, 1, 416, DateTimeKind.Utc).AddTicks(7097),
                             IsActive = true,
                             IsDeleted = false,
                             Price = 5.5,

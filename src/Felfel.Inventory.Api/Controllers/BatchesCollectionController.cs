@@ -49,9 +49,8 @@ namespace Felfel.Inventory.Api.Controllers
                 {
                     try
                     {
-                        var repoObj = _mapper.Map<Batch>(create);
-                        _batchRepository.AddGeneric(repoObj);
-                        if (repoObj.BatchId > 0)
+                        var repoObj = _mapper.Map<Batch>(create);                        
+                        if (await _batchRepository.AddBatch(repoObj))
                         {
                             var mapped = _mapper.Map<BatchDto>(repoObj);
                             result.Add(mapped);

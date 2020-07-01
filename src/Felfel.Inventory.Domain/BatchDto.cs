@@ -7,6 +7,8 @@ namespace Felfel.Inventory.Domain
     {
         public int BatchId { get; set; }
 
+        public ProductDto Product { get; set; }
+
         public int AvailableUnits { get; set; }
     }
 }

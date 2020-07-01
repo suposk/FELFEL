@@ -89,12 +89,10 @@ namespace Felfel.Inventory.Api.Controllers
             {
                 _logger.LogInformation($"{nameof(Post)} Started");
 
-                var repoObj = _mapper.Map<Batch>(dto);
-                _batchRepository.AddGeneric(repoObj);
+                var repoObj = _mapper.Map<Batch>(dto);                
 
-                //if (await _batchRepository.SaveChangesAsync())
-                if (repoObj.BatchId > 0)
-                {
+                if (await _batchRepository.AddBatch(repoObj))
+                { 
                     result = _mapper.Map<BatchDto>(repoObj);
                     return CreatedAtRoute(nameof(GetBatch),
                         new { id = result.BatchId },

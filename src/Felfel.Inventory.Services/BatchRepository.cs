@@ -9,16 +9,6 @@ using System.Linq.Expressions;
 
 namespace Felfel.Inventory.Services
 {
-    public interface IBatchRepository: IGenericRepository
-    {
-        Task<int> GetAvailableUnits(int Id);
-
-        Task<List<Batch>> GetFilter(Expression<Func<Batch, bool>> expression);
-        
-        Task<Batch> GetById(int Id);
-
-        Task<Batch> UpdateUnits(int Id, int units, string description, bool decrementCount);
-    }
 
     public class BatchRepository : GenericRepository, IBatchRepository
     {
@@ -44,37 +34,34 @@ namespace Felfel.Inventory.Services
         }
 
 
-        public override async void AddGeneric<T>(T entity)
-        {
-            var toAdd = entity as Batch;
-            if (toAdd == null)
-                throw new ArgumentException("Wrong type passed");
+        public async Task<bool> AddBatch(Batch batch)
+        {            
+            if (batch == null)
+                throw new ArgumentNullException(nameof(batch));
 
             BatchHistory history;
-            base.AddGeneric(toAdd);
-            if (await SaveChangesAsync() && toAdd.BatchId > 0)
+            base.AddGeneric(batch);
+            if (await SaveChangesAsync() && batch.BatchId > 0)
             {
                 history = new BatchHistory
                 {
-                    BatchId = toAdd.BatchId, 
-                    Units = toAdd.DeliveredUnits,
-                    Description = $"Order of {toAdd.DeliveredUnits} units delivered"
+                    BatchId = batch.BatchId,
+                    Units = batch.DeliveredUnits,
+                    Description = $"Order of {batch.DeliveredUnits} units delivered"
                 };
                 base.AddGeneric(history);
                 if (await SaveChangesAsync() && history.BatchHistoryId > 0)
                 {
-                    return;
+                    return true;
                 }
                 else
                 {
-                    base.DeleteGeneric(toAdd);
-                    await SaveChangesAsync();
+                    base.DeleteGeneric(batch);
+                    return await SaveChangesAsync();
                 }
-            }   
-            else
-            {
-                throw new Exception("Failed to Create Batch");
             }
+            else            
+                return false;            
         }
 
         public async Task<Batch> UpdateUnits(int Id, int units, string description, bool decrementCount)
