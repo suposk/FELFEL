@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "daf7ac27-9889-42e8-a9c4-13d4bf6810e0",
+		"name": "FELFEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Batches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Batch by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/batches/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DEL Batch by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/batches/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Batch remove 20",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"batchId\": 2,    \r\n    \"units\": 20,\r\n    \"decrementUnits\": true,\r\n    \"description\": \"Removed 20 from postman\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Error Batch remove 20",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"batchId\": 0,    \r\n    \"units\": -20,\r\n    \"decrementUnits\": true,\r\n    \"description\": \"Removed 20 from postman\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Batch History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/batches/2/history",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches",
+						"2",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/products",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/products/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/products/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products Batches by product Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/products/2/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"products",
+						"2",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Batch Produtct Id 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \r\n    \"productId\": 2,    \r\n    \"deliveredUnits\": 100,\r\n    \"expirationDate\": \"2020-07-04T15:43:34.2907086\"        \r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Error Batch Produtct Id 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \r\n    \"productId\": -2,    \r\n    \"deliveredUnits\": -10,\r\n    \"expirationDate\": \"2020-07-04T15:43:34.2907086\" \r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/batches",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Multiple Batch ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"productId\": 1,        \r\n        \"deliveredUnits\": 50,\r\n        \"expirationDate\": \"2020-06-30T15:43:34.2906244\"\r\n    },\r\n    {\r\n        \"productId\": 2,        \r\n        \"deliveredUnits\": 200,\r\n        \"expirationDate\": \"2020-07-04T15:43:34.2907086\"\r\n    },\r\n    {\r\n        \"productId\": 3,\r\n        \"product\": null,\r\n        \"deliveredUnits\": 300,\r\n        \"expirationDate\": \"2020-06-28T15:43:34.29071\"\r\n    }\r\n]\r\n"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/batchescollection",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"batchescollection"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Sumary?state=Expired",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Sumary"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "Fresh",
+							"disabled": true
+						},
+						{
+							"key": "state",
+							"value": "ExpiresToday",
+							"disabled": true
+						},
+						{
+							"key": "state",
+							"value": "Expired"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
